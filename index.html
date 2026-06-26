@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Interactive Study Site</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>📚 My Study Hub</h1>
+        <p>Active recall is the best way to study!</p>
+    </header>
+
+    <main>
+        <div class="card-container">
+            <div class="flashcard" id="flashcard" onclick="flipCard()">
+                <div class="front">What is the powerhouse of the cell?</div>
+                <div class="back">The Mitochondria! 🧬</div>
+            </div>
+        </div>
+        <button onclick="nextCard()">Next Question</button>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
