@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Study Site Hub</title>
+    <title>QuestStudy Hub</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
@@ -14,57 +14,85 @@
 
     <canvas id="dotsCanvas"></canvas>
 
-    <header class="navbar">
-        <button class="nav-logo">Study Site</button>
-        <div class="nav-icons">
-            <button class="icon-btn" title="Notifications"><i class="fa-solid fa-bell"></i></button>
-            <button class="icon-btn profile-btn" title="Profile"><i class="fa-solid fa-user"></i></button>
-        </div>
-    </header>
-
-    <main class="dashboard-container">
+    <div class="app-container">
         
-        <div class="dashboard-card">
-            <div class="card-icon"><i class="fa-solid fa-chart-line"></i></div>
-            <h3>Exam Prep</h3>
-            <ul class="card-menu">
-                <li>Practice Tests</li>
-                <li>Flashcards</li>
-                <li>Weak Spots Tracker</li>
-            </ul>
-        </div>
+        <aside class="sidebar">
+            <div class="sidebar-brand">
+                <i class="fa-solid fa-graduation-cap"></i> <span>StudyHub</span>
+            </div>
+            <nav class="sidebar-menu">
+                <a href="#" class="menu-item active"><i class="fa-solid fa-house"></i> <span>Dashboard</span></a>
+                <a href="#" class="menu-item"><i class="fa-solid fa-layer-group"></i> <span>Flashcards</span></a>
+                <a href="#" class="menu-item"><i class="fa-solid fa-robot"></i> <span>AI Assistant</span></a>
+                <a href="#" class="menu-item"><i class="fa-solid fa-ranking-star"></i> <span>Leaderboard</span></a>
+            </nav>
+            <div class="sidebar-footer">
+                <div class="user-profile">
+                    <div class="avatar">J</div>
+                    <span class="username">Jeremy</span>
+                </div>
+            </div>
+        </aside>
 
-        <div class="dashboard-card">
-            <div class="card-icon"><i class="fa-solid fa-book-open"></i></div>
-            <h3>Learn & Grow</h3>
-            <ul class="card-menu">
-                <li>Daily Lessons</li>
-                <li>Skill Badges</li>
-                <li>Resource Library</li>
-            </ul>
-        </div>
+        <main class="main-content">
+            
+            <header class="topbar">
+                <div class="search-wrapper">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" placeholder="Search courses, cards, or AI topics... (Ctrl + K)">
+                </div>
+                
+                <div class="vault-status">
+                    <div class="currency-badge streak" title="Daily Streak">
+                        <i class="fa-solid fa-fire"></i> <span>5</span>
+                    </div>
+                    <div class="currency-badge coins" title="Study Gems">
+                        <i class="fa-solid fa-gem"></i> <span id="coin-amount">320</span>
+                    </div>
+                    <button class="icon-btn" title="Notifications"><i class="fa-solid fa-bell"></i></button>
+                </div>
+            </header>
 
-        <div class="dashboard-card">
-            <div class="card-icon"><i class="fa-solid fa-chalkboard-user"></i></div>
-            <h3>Presentation</h3>
-            <ul class="card-menu">
-                <li>Slide Builder</li>
-                <li>Study Decks</li>
-                <li>Export PDFs</li>
-            </ul>
-        </div>
+            <div class="workspace-body">
+                <div class="welcome-heading">
+                    <h1>Welcome back, Scholar</h1>
+                    <p>Select a node to continue your grinding session.</p>
+                </div>
 
-        <div class="dashboard-card">
-            <div class="card-icon"><i class="fa-solid fa-users"></i></div>
-            <h3>Group Quiz</h3>
-            <ul class="card-menu">
-                <li>Join a Room</li>
-                <li>Create Live Quiz</li>
-                <li>Leaderboards</li>
-            </ul>
-        </div>
+                <div class="dashboard-grid">
+                    
+                    <div class="feature-card" onclick="triggerAction('exam')">
+                        <div class="card-header-icon"><i class="fa-solid fa-chart-line"></i></div>
+                        <h3>Exam Prep</h3>
+                        <p>Quickfire challenges, mock evaluation arenas, and mistakes logs.</p>
+                        <div class="card-action-indicator">Launch Arena <i class="fa-solid fa-arrow-right"></i></div>
+                    </div>
 
-    </main>
+                    <div class="feature-card" onclick="triggerAction('flashcards')">
+                        <div class="card-header-icon"><i class="fa-solid fa-book-open"></i></div>
+                        <h3>Flashcard Vault</h3>
+                        <p>Master retention loops via visual smart active-recall card decks.</p>
+                        <div class="card-action-indicator">Open Vault <i class="fa-solid fa-arrow-right"></i></div>
+                    </div>
+
+                    <div class="feature-card" onclick="triggerAction('ai')">
+                        <div class="card-header-icon"><i class="fa-solid fa-chalkboard-user"></i></div>
+                        <h3>AI Chatbox</h3>
+                        <p>Instant explanation prompt engine, text compiler, and summary generation.</p>
+                        <div class="card-action-indicator">Summon AI <i class="fa-solid fa-arrow-right"></i></div>
+                    </div>
+
+                    <div class="feature-card" onclick="triggerAction('quiz')">
+                        <div class="card-header-icon"><i class="fa-solid fa-users"></i></div>
+                        <h3>Group Quiz</h3>
+                        <p>Multiplayer lobbies, competitive real-time rooms, and global ladder runs.</p>
+                        <div class="card-action-indicator">Enter Room <i class="fa-solid fa-arrow-right"></i></div>
+                    </div>
+
+                </div>
+            </div>
+        </main>
+    </div>
 
     <script src="basiclogic.js"></script>
 </body>
