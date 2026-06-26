@@ -1,27 +1,88 @@
-const flashcard = document.getElementById('flashcard');
-const frontText = document.querySelector('.front');
-const backText = document.querySelector('.back');
+const canvas = document.getElementById('dotsCanvas');
+const ctx = canvas.getContext('2d');
 
-const deck = [
-    { q: "What is the powerhouse of the cell?", a: "The Mitochondria! 🧬" },
-    { q: "What is $5 \times 5$?", a: "25! 🧠" },
-    { q: "Who wrote 'Romeo and Juliet'?", a: "William Shakespeare! 📜" }
-];
+function resizeCanvas() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+}
+window.addEventListener('resize', resizeCanvas);
+resizeCanvas();
 
-let currentCardIndex = 0;
+// Dot settings
+const dotCount = 60; 
+const dotsArray = [];
 
-function flipCard() {
-    flashcard.classList.toggle('flipped');
+class Dot {
+    constructor() {
+        this.radius = 3;
+        this.x = Math.random() * (canvas.width - this.radius * 2) + this.radius;
+        this.y = Math.random() * (canvas.height - this.radius * 2) + this.radius;
+        // speed
+        this.vx = (Math.random() - 0.5) * 1.5; 
+        this.vy = (Math.random() - 0.5) * 1.5;
+    }
+
+    draw() {
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+        ctx.fillStyle = 'rgba(255, 255, 255, 0.25)'; // Semitransparent white dots
+        ctx.fill();
+    }
+
+    update() {
+        this.x += this.vx;
+        this.y += this.vy;
+
+        if (this.x - this.radius < 0 || this.x + this.radius > canvas.width) {
+            this.vx *= -1;
+        }
+        if (this.y - this.radius < 0 || this.y + this.radius > canvas.height) {
+            this.vy *= -1;
+        }
+    }
 }
 
-function nextCard() {
-    // Reset flip animation first
-    flashcard.classList.remove('flipped');
+
+for (let i = 0; i < dotCount; i++) {
+    dotsArray.push(new Dot());
+}
+
+// dot physics
+function handleCollisions() {
+    for (let i = 0; i < dotsArray.length; i++) {
+        for (let j = i + 1; j < dotsArray.length; j++) {
+            let dx = dotsArray[j].x - dotsArray[i].x;
+            let dy = dotsArray[j].y - dotsArray[i].y;
+            let distance = Math.sqrt(dx * dx + dy * dy);
+
+            
+            if (distance < (dotsArray[i].radius + dotsArray[j].radius)) {
+                
+                let tempVx = dotsArray[i].vx;
+                let tempVy = dotsArray[i].vy;
+                
+                dotsArray[i].vx = dotsArray[j].vx;
+                dotsArray[i].vy = dotsArray[j].vy;
+                
+                dotsArray[j].vx = tempVx;
+                dotsArray[j].vy = tempVy;
+            }
+        }
+    }
+}
+
+// animation loop
+function animate() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
     
-    // Wait a brief moment for the flip to reset, then change content
-    setTimeout(() => {
-        currentCardIndex = (currentCardIndex + 1) % deck.length;
-        frontText.textContent = deck[currentCardIndex].q;
-        backText.textContent = deck[currentCardIndex].a;
-    }, 200);
+    handleCollisions();
+
+    dotsArray.forEach(dot => {
+        dot.update();
+        dot.draw();
+    });
+
+    requestAnimationFrame(animate);
 }
+
+animate();

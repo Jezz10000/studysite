@@ -3,25 +3,69 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Interactive Study Site</title>
+    <title>Study Site Hub</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header>
-        <h1>📚 My Study Hub</h1>
-        <p>Active recall is the best way to study!</p>
+
+    <canvas id="dotsCanvas"></canvas>
+
+    <header class="navbar">
+        <button class="nav-logo">Study Site</button>
+        <div class="nav-icons">
+            <button class="icon-btn" title="Notifications"><i class="fa-solid fa-bell"></i></button>
+            <button class="icon-btn profile-btn" title="Profile"><i class="fa-solid fa-user"></i></button>
+        </div>
     </header>
 
-    <main>
-        <div class="card-container">
-            <div class="flashcard" id="flashcard" onclick="flipCard()">
-                <div class="front">What is the powerhouse of the cell?</div>
-                <div class="back">The Mitochondria! 🧬</div>
-            </div>
+    <main class="dashboard-container">
+        
+        <div class="dashboard-card">
+            <div class="card-icon"><i class="fa-solid fa-chart-line"></i></div>
+            <h3>Exam Prep</h3>
+            <ul class="card-menu">
+                <li>Practice Tests</li>
+                <li>Flashcards</li>
+                <li>Weak Spots Tracker</li>
+            </ul>
         </div>
-        <button onclick="nextCard()">Next Question</button>
+
+        <div class="dashboard-card">
+            <div class="card-icon"><i class="fa-solid fa-book-open"></i></div>
+            <h3>Learn & Grow</h3>
+            <ul class="card-menu">
+                <li>Daily Lessons</li>
+                <li>Skill Badges</li>
+                <li>Resource Library</li>
+            </ul>
+        </div>
+
+        <div class="dashboard-card">
+            <div class="card-icon"><i class="fa-solid fa-chalkboard-user"></i></div>
+            <h3>Presentation</h3>
+            <ul class="card-menu">
+                <li>Slide Builder</li>
+                <li>Study Decks</li>
+                <li>Export PDFs</li>
+            </ul>
+        </div>
+
+        <div class="dashboard-card">
+            <div class="card-icon"><i class="fa-solid fa-users"></i></div>
+            <h3>Group Quiz</h3>
+            <ul class="card-menu">
+                <li>Join a Room</li>
+                <li>Create Live Quiz</li>
+                <li>Leaderboards</li>
+            </ul>
+        </div>
+
     </main>
 
-    <script src="script.js"></script>
+    <script src="basiclogic.js"></script>
 </body>
 </html>
