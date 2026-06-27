@@ -8,7 +8,7 @@ function resizeCanvas() {
 window.addEventListener('resize', resizeCanvas);
 resizeCanvas();
 
-// Dot settings
+// 
 const dotCount = 60; 
 const dotsArray = [];
 
@@ -71,7 +71,6 @@ function handleCollisions() {
     }
 }
 
-// animation loop
 function animate() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     
@@ -87,11 +86,10 @@ function animate() {
 
 animate();
 
-// --- WORKSPACE FUNCTIONAL LOGIC ---
 function triggerAction(nodeType) {
     console.log(`Initializing system sequence for: ${nodeType}`);
     
-    // Smooth micro-feedback reward interaction simulation
+    // ITS SO SMOOTH ;D! 
     const coinCounter = document.getElementById('coin-amount');
     if (coinCounter) {
         let currentCoins = parseInt(coinCounter.textContent);
