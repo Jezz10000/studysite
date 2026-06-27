@@ -11,6 +11,47 @@ resizeCanvas();
 // 
 const dotCount = 60; 
 const dotsArray = [];
+
+
+// dot physics
+function handleCollisions() {
+    for (let i = 0; i < dotsArray.length; i++) {
+        for (let j = i + 1; j < dotsArray.length; j++) {
+            let dx = dotsArray[j].x - dotsArray[i].x;
+            let dy = dotsArray[j].y - dotsArray[i].y;
+            let distance = Math.sqrt(dx * dx + dy * dy);
+
+            
+            if (distance < (dotsArray[i].radius + dotsArray[j].radius)) {
+                
+                let tempVx = dotsArray[i].vx;
+                let tempVy = dotsArray[i].vy;
+                
+                dotsArray[i].vx = dotsArray[j].vx;
+                dotsArray[i].vy = dotsArray[j].vy;
+                
+                dotsArray[j].vx = tempVx;
+                dotsArray[j].vy = tempVy;
+            }
+        }
+    }
+}
+
+function animate() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    
+    handleCollisions();
+
+    dotsArray.forEach(dot => {
+        dot.update();
+        dot.draw();
+    });
+
+    requestAnimationFrame(animate);
+}
+
+animate();
+
 // --- ANIMATED QUOTE CONFIGURATION ENGINE ---
 const MOTIVATIONAL_QUOTES = [
     "\"Learn by levels ahead.\"",
@@ -84,45 +125,6 @@ class Dot {
 for (let i = 0; i < dotCount; i++) {
     dotsArray.push(new Dot());
 }
-
-// dot physics
-function handleCollisions() {
-    for (let i = 0; i < dotsArray.length; i++) {
-        for (let j = i + 1; j < dotsArray.length; j++) {
-            let dx = dotsArray[j].x - dotsArray[i].x;
-            let dy = dotsArray[j].y - dotsArray[i].y;
-            let distance = Math.sqrt(dx * dx + dy * dy);
-
-            
-            if (distance < (dotsArray[i].radius + dotsArray[j].radius)) {
-                
-                let tempVx = dotsArray[i].vx;
-                let tempVy = dotsArray[i].vy;
-                
-                dotsArray[i].vx = dotsArray[j].vx;
-                dotsArray[i].vy = dotsArray[j].vy;
-                
-                dotsArray[j].vx = tempVx;
-                dotsArray[j].vy = tempVy;
-            }
-        }
-    }
-}
-
-function animate() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    
-    handleCollisions();
-
-    dotsArray.forEach(dot => {
-        dot.update();
-        dot.draw();
-    });
-
-    requestAnimationFrame(animate);
-}
-
-animate();
 
 function triggerAction(nodeType) {
     console.log(`Initializing system sequence for: ${nodeType}`);
