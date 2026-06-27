@@ -23,7 +23,7 @@ class Dot {
     draw() {
         ctx.beginPath();
         ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-        ctx.fillStyle = 'rgba(255, 255, 255, 0.25)'; // Semitransparent white dots
+        ctx.fillStyle = 'rgba(255, 0, 234, 0.16)'; // Semitransparent white dots
         ctx.fill();
     }
 
