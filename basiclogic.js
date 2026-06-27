@@ -87,23 +87,33 @@ function animate() {
 
 animate();
 
-// workspace logic
+// --- WORKSPACE FUNCTIONAL LOGIC ---
 function triggerAction(nodeType) {
     console.log(`Initializing system sequence for: ${nodeType}`);
-
+    
+    // Smooth micro-feedback reward interaction simulation
     const coinCounter = document.getElementById('coin-amount');
-    let currentCoins = parseInt(coinCounter.textContent);
-    
-    currentCoins += 5;
-    coinCounter.textContent = currentCoins;
-    
-    coinCounter.parentElement.style.transform = 'scale(1.1)';
-    coinCounter.parentElement.style.borderColor = '#38bdf8';
-    setTimeout(() => {
-        coinCounter.parentElement.style.transform = '';
-        coinCounter.parentElement.style.borderColor = '';
-    }, 200);
+    if (coinCounter) {
+        let currentCoins = parseInt(coinCounter.textContent);
+        currentCoins += 5;
+        coinCounter.textContent = currentCoins;
+        
+        coinCounter.parentElement.style.transform = 'scale(1.1)';
+        coinCounter.parentElement.style.borderColor = '#38bdf8';
+        setTimeout(() => {
+            coinCounter.parentElement.style.transform = '';
+            coinCounter.parentElement.style.borderColor = '';
+        }, 200);
+    }
 }
+
+window.addEventListener('keydown', (e) => {
+    if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+        e.preventDefault();
+        const searchInput = document.querySelector('.search-wrapper input');
+        if (searchInput) searchInput.focus();
+    }
+});
 
 window.addEventListener('keydown', (e) => {
     if ((e.ctrlKey || e.metaKey) && e.key === 'k') {

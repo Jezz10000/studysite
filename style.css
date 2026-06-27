@@ -1,7 +1,7 @@
-
+/* Core Layout Settings */
 body {
     font-family: 'Inter', sans-serif;
-    background-color: #060d1a; 
+    background-color: #060d1a;
     color: #ffffff;
     margin: 0;
     padding: 0;
@@ -25,11 +25,12 @@ body {
     height: 100vh;
 }
 
+/* Sidebar Styling */
 .sidebar {
     width: 260px;
-    background: rgba(10, 25, 47, 0.6);
+    background: rgba(10, 21, 41, 0.75);
     backdrop-filter: blur(12px);
-    border-right: 1px solid rgba(255, 255, 255, 0.06);
+    border-right: 1px solid rgba(111, 66, 193, 0.15);
     display: flex;
     flex-direction: column;
     padding: 25px 20px;
@@ -48,7 +49,7 @@ body {
 }
 
 .sidebar-brand i {
-    color: #6f42c1;
+    color: #8b5cf6;
 }
 
 .sidebar-menu {
@@ -65,15 +66,16 @@ body {
     color: #94a3b8;
     text-decoration: none;
     padding: 12px 16px;
-    border-radius: 10px;
+    border-radius: 12px;
     font-weight: 500;
     font-size: 0.95rem;
     transition: all 0.2s ease;
 }
 
 .menu-item:hover, .menu-item.active {
-    background: rgba(111, 66, 193, 0.15);
+    background: rgba(111, 66, 193, 0.2);
     color: #ffffff;
+    box-shadow: inset 0 0 10px rgba(139, 92, 246, 0.1);
 }
 
 .menu-item.active i {
@@ -100,14 +102,15 @@ body {
     align-items: center;
     justify-content: center;
     font-weight: 700;
+    box-shadow: 0 0 12px rgba(111, 66, 193, 0.4);
 }
 
+/* Main Screen Workspace */
 .main-content {
     flex-grow: 1;
     display: flex;
     flex-direction: column;
     overflow-y: auto;
-    background: linear-gradient(180deg, rgba(6, 13, 26, 0.5) 0%, #060d1a 100%);
 }
 
 .topbar {
@@ -116,23 +119,25 @@ body {
     justify-content: space-between;
     align-items: center;
     padding: 0 40px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+    border-bottom: 1px solid rgba(111, 66, 193, 0.1);
 }
 
 .search-wrapper {
     display: flex;
     align-items: center;
     gap: 12px;
-    background: rgba(255, 255, 255, 0.04);
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(111, 66, 193, 0.2);
     padding: 10px 16px;
     border-radius: 12px;
-    width: 350px;
-    transition: border-color 0.2s;
+    width: 380px;
+    transition: all 0.2s;
 }
 
 .search-wrapper:focus-within {
-    border-color: #6f42c1;
+    border-color: #8b5cf6;
+    background: rgba(255, 255, 255, 0.05);
+    box-shadow: 0 0 15px rgba(139, 92, 246, 0.15);
 }
 
 .search-wrapper input {
@@ -144,6 +149,11 @@ body {
     font-size: 0.9rem;
 }
 
+.search-wrapper i {
+    color: #a78bfa;
+}
+
+/* Vault Currencies */
 .vault-status {
     display: flex;
     align-items: center;
@@ -158,12 +168,15 @@ body {
     font-size: 0.9rem;
     padding: 6px 14px;
     border-radius: 20px;
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(255, 255, 255, 0.06);
+    background: rgba(10, 21, 41, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
+.currency-badge.streak { border-color: rgba(249, 115, 22, 0.3); }
 .currency-badge.streak i { color: #f97316; }
-.currency-badge.coins i { color: #38bdf8; }
+
+.currency-badge.gems { border-color: rgba(56, 189, 248, 0.3); }
+.currency-badge.gems i { color: #38bdf8; }
 
 .icon-btn {
     background: none;
@@ -175,6 +188,7 @@ body {
 }
 .icon-btn:hover { color: #ffffff; }
 
+/* Workspace Containers */
 .workspace-body {
     padding: 40px;
     max-width: 1200px;
@@ -184,15 +198,103 @@ body {
 }
 
 .welcome-heading h1 {
-    font-size: 2rem;
+    font-size: 2.2rem;
     font-weight: 700;
-    margin: 0 0 8px 0;
+    margin: 0 0 6px 0;
     letter-spacing: -0.5px;
 }
 
 .welcome-heading p {
     color: #94a3b8;
-    margin: 0 0 40px 0;
+    margin: 0 0 30px 0;
+    font-size: 1.05rem;
+}
+
+/* --- THE NEW DUOLINGO PROGRESS ROAD BANNER --- */
+.current-topic-banner {
+    background: linear-gradient(135deg, rgba(46, 16, 102, 0.6) 0%, rgba(15, 23, 42, 0.8) 100%);
+    border: 1px solid rgba(139, 92, 246, 0.3);
+    border-radius: 20px;
+    padding: 30px;
+    margin-bottom: 35px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 24px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2), inset 0 0 20px rgba(139, 92, 246, 0.1);
+}
+
+.topic-tag {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #c084fc;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.current-topic-banner h2 {
+    margin: 6px 0 8px 0;
+    font-size: 1.6rem;
+    font-weight: 700;
+}
+
+.current-topic-banner p {
+    color: #cbd5e1;
+    margin: 0 0 20px 0;
+    font-size: 0.95rem;
+}
+
+.topic-progress-container {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    max-width: 500px;
+    width: 100%;
+}
+
+.progress-bar-track {
+    background: #1e293b;
+    height: 12px;
+    border-radius: 6px;
+    flex-grow: 1;
+    overflow: hidden;
+}
+
+.progress-bar-fill {
+    background: linear-gradient(90deg, #a78bfa, #6f42c1);
+    height: 100%;
+    border-radius: 6px;
+    box-shadow: 0 0 10px rgba(111, 66, 193, 0.5);
+}
+
+.progress-percentage {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #a78bfa;
+    white-space: nowrap;
+}
+
+.primary-action-btn {
+    background: #6f42c1;
+    color: white;
+    border: none;
+    padding: 14px 28px;
+    border-radius: 12px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    box-shadow: 0 4px 14px rgba(111, 66, 193, 0.4);
+    transition: all 0.2s ease;
+}
+
+.primary-action-btn:hover {
+    background: #8b5cf6;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(139, 92, 246, 0.5);
 }
 
 .dashboard-grid {
@@ -205,69 +307,74 @@ body {
     background: rgba(10, 25, 47, 0.4);
     backdrop-filter: blur(8px);
     border: 1px solid rgba(255, 255, 255, 0.05);
-    border-radius: 16px;
+    border-radius: 20px;
     padding: 30px;
     cursor: pointer;
     position: relative;
     display: flex;
     flex-direction: column;
-    height: 220px;
+    height: 230px;
     box-sizing: border-box;
     transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+.feature-card.purple-accent {
+    border-color: rgba(111, 66, 193, 0.15);
+}
+
 .card-header-icon {
-    font-size: 1.6rem;
-    color: #a78bfa; 
-    margin-bottom: 20px;
+    font-size: 1.8rem;
+    color: #a78bfa;
+    margin-bottom: 16px;
     transition: transform 0.2s ease;
 }
 
 .feature-card h3 {
     margin: 0 0 10px 0;
-    font-size: 1.25rem;
+    font-size: 1.3rem;
     font-weight: 600;
 }
 
 .feature-card p {
     color: #94a3b8;
-    font-size: 0.88rem;
+    font-size: 0.9rem;
     line-height: 1.5;
     margin: 0;
     flex-grow: 1;
 }
 
 .card-action-indicator {
-    font-size: 0.85rem;
+    font-size: 0.88rem;
     font-weight: 600;
-    color: #6f42c1;
+    color: #a78bfa;
     display: flex;
     align-items: center;
     gap: 6px;
-    opacity: 0;
-    transform: translateX(-5px);
-    transition: all 0.2s ease;
+    margin-top: 15px;
+    transition: transform 0.2s ease;
 }
 
+
 .feature-card:hover {
-    background: rgba(111, 66, 193, 0.06);
-    border-color: rgba(111, 66, 193, 0.3);
-    transform: translateY(-4px);
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+    background: rgba(111, 66, 193, 0.08);
+    border-color: rgba(139, 92, 246, 0.4);
+    transform: translateY(-5px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4), 0 0 15px rgba(111, 66, 193, 0.1);
 }
 
 .feature-card:hover .card-header-icon {
-    transform: scale(1.08);
-    color: #6f42c1;
+    transform: scale(1.1);
+    color: #c084fc;
 }
 
 .feature-card:hover .card-action-indicator {
-    opacity: 1;
-    transform: translateX(0);
+    transform: translateX(4px);
+    color: #ffffff;
 }
 
 @media (max-width: 900px) {
-    .sidebar { display: none; } 
+    .sidebar { display: none; }
     .topbar { padding: 0 20px; }
     .workspace-body { padding: 20px; }
+    .current-topic-banner { padding: 20px; }
 }

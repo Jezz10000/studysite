@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>QuestStudy Hub</title>
+    <title>StudyHub - Learn by Levels Ahead</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -39,14 +39,14 @@
             <header class="topbar">
                 <div class="search-wrapper">
                     <i class="fa-solid fa-magnifying-glass"></i>
-                    <input type="text" placeholder="Search quizes, topics and more! (Ctrl + K)">
+                    <input type="text" placeholder="Search quizzes, topics and more! (Ctrl + K)">
                 </div>
                 
                 <div class="vault-status">
                     <div class="currency-badge streak" title="Daily Streak">
                         <i class="fa-solid fa-fire"></i> <span>5</span>
                     </div>
-                    <div class="currency-badge coins" title="Study Gems">
+                    <div class="currency-badge gems" title="Study Gems">
                         <i class="fa-solid fa-gem"></i> <span id="coin-amount">320</span>
                     </div>
                     <button class="icon-btn" title="Notifications"><i class="fa-solid fa-bell"></i></button>
@@ -59,30 +59,50 @@
                     <p>Hello Samuel! continue your grinding session.</p>
                 </div>
 
+                <div class="current-topic-banner">
+                    <div class="topic-info">
+                        <span class="topic-tag">CURRENT UNIT</span>
+                        <h2>Graphs and Expressions</h2>
+                        <p>Master lines of best fit, slopes, and linear inequalities.</p>
+                        
+                        <div class="topic-progress-container">
+                            <div class="progress-bar-track">
+                                <div class="progress-bar-fill" style="width: 65%;"></div>
+                            </div>
+                            <span class="progress-percentage">65% Complete</span>
+                        </div>
+                    </div>
+                    <div class="topic-actions">
+                        <button class="primary-action-btn" onclick="triggerAction('current-exam')">
+                            <i class="fa-solid fa-play"></i> Take Exam Arena
+                        </button>
+                    </div>
+                </div>
+
                 <div class="dashboard-grid">
                     
-                    <div class="feature-card" onclick="triggerAction('exam')">
+                    <div class="feature-card purple-accent" onclick="triggerAction('exam')">
                         <div class="card-header-icon"><i class="fa-solid fa-chart-line"></i></div>
                         <h3>Exam Prep</h3>
-                        <p>Question quickfire, mock Exam, problem solver and mistake merchant</p>
-                        <div class="card-action-indicator">Open Examiner<i class="fa-solid fa-arrow-right"></i></div>
+                        <p>Question quickfire, mock Exam, problem solver and mistake merchant.</p>
+                        <div class="card-action-indicator">Open Examiner <i class="fa-solid fa-arrow-right"></i></div>
                     </div>
 
-                    <div class="feature-card" onclick="triggerAction('flashcards')">
-                        <div class="card-header-icon"><i class="fa-solid fa-book-open"></i></div>
+                    <div class="feature-card purple-accent" onclick="triggerAction('flashcards')">
+                        <div class="card-header-icon"><i class="fa-solid fa-book"></i></div>
                         <h3>My Flashcards</h3>
                         <p>Master your subject with visual active-recall study technique.</p>
                         <div class="card-action-indicator">Open flashcards <i class="fa-solid fa-arrow-right"></i></div>
                     </div>
 
-                    <div class="feature-card" onclick="triggerAction('ai')">
+                    <div class="feature-card purple-accent" onclick="triggerAction('ai')">
                         <div class="card-header-icon"><i class="fa-solid fa-chalkboard-user"></i></div>
                         <h3>AI Tutor</h3>
-                        <p>Instant explanation prompt engine, resource finder, and tutor characterization</p>
-                        <div class="card-action-indicator">Talk to AI <i class="fa-solid fa-arrow-right"></i></div>
+                        <p>Instant explanation prompt engine, resource finder, and tutor characterization.</p>
+                        <div class="card-action-indicator">Summon AI <i class="fa-solid fa-arrow-right"></i></div>
                     </div>
 
-                    <div class="feature-card" onclick="triggerAction('quiz')">
+                    <div class="feature-card purple-accent" onclick="triggerAction('quiz')">
                         <div class="card-header-icon"><i class="fa-solid fa-users"></i></div>
                         <h3>Group Quiz</h3>
                         <p>Multiplayer lobbies, competitive real-time rooms, and monthly leaderboard.</p>
