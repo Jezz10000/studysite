@@ -11,7 +11,45 @@ resizeCanvas();
 // 
 const dotCount = 60; 
 const dotsArray = [];
+// --- ANIMATED QUOTE CONFIGURATION ENGINE ---
+const MOTIVATIONAL_QUOTES = [
+    "\"Learn by levels ahead.\"",
+    "\"Discipline today, success tomorrow. Keep pushing forward.\"",
+    "\"Hard work and wisdom are the covershell of talent.\"",
+    "\"If you fear suffering you already suffer because you fear\"",
+    "\"Whoever pursues righteousness and love finds life, prosperity and honor.\"",
+    "\"STUDYING IS RIGHTEOUS.\""
+    "\"Just do it. - Nike\""
+];
 
+let currentQuoteIndex = 0;
+
+function rotateQuoteSmoothly() {
+    const quoteElement = document.getElementById('rotator-quote-text');
+    if (!quoteElement) return;
+    
+    // Step 1: Initiate slide-up exit fade transition animation
+    quoteElement.classList.add('fade-out');
+    
+    setTimeout(() => {
+        // Step 2: Switch quote strings out while hidden from view
+        currentQuoteIndex = (currentQuoteIndex + 1) % MOTIVATIONAL_QUOTES.length;
+        quoteElement.textContent = MOTIVATIONAL_QUOTES[currentQuoteIndex];
+        
+        // Snap positioning down preparing entry slide
+        quoteElement.classList.remove('fade-out');
+        quoteElement.classList.add('fade-in');
+        
+        // Step 3: Trigger active entrance opacity pop render
+        setTimeout(() => {
+            quoteElement.classList.remove('fade-in');
+        }, 50);
+        
+    }, 400); // Sync timing directly with CSS fade transitions
+}
+
+// Spin rotation wheel automatically every 5000 milliseconds
+setInterval(rotateQuoteSmoothly, 5000);
 class Dot {
     constructor() {
         this.radius = 3;

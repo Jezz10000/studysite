@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>StudyHub - Learn by Levels Ahead</title>
+    <title>StudyHub Dashboard</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@1,600;1,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
@@ -18,14 +18,15 @@
         
         <aside class="sidebar">
             <div class="sidebar-brand">
-                <i class="fa-solid fa-graduation-cap"></i> <span>Study Site</span>
+                <i class="fa-solid fa-bolt"></i> <span>StudyHub</span>
             </div>
             <nav class="sidebar-menu">
                 <a href="#" class="menu-item active"><i class="fa-solid fa-house"></i> <span>Dashboard</span></a>
+                <a href="#" class="menu-item"><i class="fa-solid fa-graduation-cap"></i> <span>Courses</span></a>
+                <a href="#" class="menu-item"><i class="fa-solid fa-pen-to-square"></i> <span>Exam Prep</span></a>
                 <a href="#" class="menu-item"><i class="fa-solid fa-layer-group"></i> <span>Flashcards</span></a>
-                <a href="#" class="menu-item"><i class="fa-solid fa-robot"></i> <span>AI Assistant</span></a>
-                <a href="#" class="menu-item"><i class="fa-solid fa-ranking-star"></i> <span>Leaderboard</span></a>
-                <a href="#" class="menu-item"><i class="fa-solid fa-ranking-star"></i> <span>Leaderboard</span></a>
+                <a href="#" class="menu-item"><i class="fa-solid fa-circle-question"></i> <span>Quizzes</span></a>
+                <a href="#" class="menu-item"><i class="fa-solid fa-chart-simple"></i> <span>Analytics</span></a>
             </nav>
             <div class="sidebar-footer">
                 <div class="user-profile">
@@ -40,78 +41,152 @@
             <header class="topbar">
                 <div class="search-wrapper">
                     <i class="fa-solid fa-magnifying-glass"></i>
-                    <input type="text" placeholder="Search quizzes, topics and more! (Ctrl + K)">
+                    <input type="text" placeholder="Search courses, levels, or quickfire keys... (Ctrl + K)">
                 </div>
                 
                 <div class="vault-status">
                     <div class="currency-badge streak" title="Daily Streak">
-                        <i class="fa-solid fa-fire"></i> <span>5</span>
+                        <i class="fa-solid fa-fire"></i> <span>12 days</span>
+                    </div>
+                    <div class="currency-badge coins" title="Gold Coins">
+                        <i class="fa-solid fa-coins"></i> <span>1,240</span>
                     </div>
                     <div class="currency-badge gems" title="Study Gems">
-                        <i class="fa-solid fa-gem"></i> <span id="coin-amount">320</span>
+                        <i class="fa-solid fa-gem"></i> <span>320</span>
                     </div>
                     <button class="icon-btn" title="Notifications"><i class="fa-solid fa-bell"></i></button>
                 </div>
             </header>
 
-            <div class="workspace-body">
-                <div class="welcome-heading">
-                    <h1>Learn by levels ahead.</h1>
-                    <p>Hello Samuel! continue your grinding session.</p>
-                </div>
+            <div class="workspace-split">
+                
+                <section class="left-pillar">
+                    <div class="welcome-heading">
+                        <h1>Learn by <span class="fancy-text">levels ahead.</span></h1>
+                        <p>Ready to make today productive?</p>
+                    </div>
 
-                <div class="current-topic-banner">
-                    <div class="topic-info">
-                        <span class="topic-tag">CURRENT UNIT</span>
-                        <h2>GCSE Chemistry<h2>
-                        <h3>Atomic stability</h3>
-                        <p>Why does everything decay into lead?</p>
-                        
-                        <div class="topic-progress-container">
-                            <div class="progress-bar-track">
-                                <div class="progress-bar-fill" style="width: 65%;"></div>
+                    <div class="current-topic-banner">
+                        <div class="topic-info">
+                            <span class="topic-tag">TODAY'S FOCUS</span>
+                            <h2>GCSE Chemistry — Atomic Stability</h2>
+                            <p>Why does everything decay into lead?</p>
+                            
+                            <div class="topic-progress-container">
+                                <div class="progress-bar-track">
+                                    <div class="progress-bar-fill" style="width: 67%;"></div>
+                                </div>
+                                <span class="progress-percentage">67% Complete</span>
                             </div>
-                            <span class="progress-percentage">67% Complete</span>
+                        </div>
+                        <div class="topic-actions">
+                            <button class="primary-action-btn">
+                                <i class="fa-solid fa-play"></i> Continue topic
+                            </button>
                         </div>
                     </div>
-                    <div class="topic-actions">
-                        <button class="primary-action-btn" onclick="triggerAction('current-exam')">
-                            <i class="fa-solid fa-play"></i> Continue topic
-                        </button>
-                    </div>
-                </div>
 
-                <div class="dashboard-grid">
+                    <h3 class="section-title">Trending Modules</h3>
+                    <div class="dashboard-grid">
+                        
+                        <div class="course-card clickbait-math">
+                            <div class="thumbnail-overlay">
+                                <span class="badge red">CRITICAL</span>
+                                <i class="fa-solid fa-calculator card-icon"></i>
+                            </div>
+                            <div class="card-details">
+                                <h3>The Slope Formula Hack Examiners Hate 🔥</h3>
+                                <p>Master Linear Inequalities in under 4 minutes flat.</p>
+                                <div class="card-meta">72% Completed</div>
+                            </div>
+                        </div>
+
+                        <div class="course-card clickbait-chem">
+                            <div class="thumbnail-overlay">
+                                <span class="badge blue">NEW RECORD</span>
+                                <i class="fa-solid fa-flask card-icon"></i>
+                            </div>
+                            <div class="card-details">
+                                <h3>Stop Memorizing Periodic Tables. Do This Instead 🧠</h3>
+                                <p>The visual framework trick for atomic structural layouts.</p>
+                                <div class="card-meta">80% Completed</div>
+                            </div>
+                        </div>
+
+                        <div class="course-card clickbait-bio">
+                            <div class="thumbnail-overlay">
+                                <span class="badge green">SPEEDRUN</span>
+                                <i class="fa-solid fa-dna card-icon"></i>
+                            </div>
+                            <div class="card-details">
+                                <h3>Mitosis Speedrun: Passing Biology Confidently 🦠</h3>
+                                <p>An interactive cellular division loop sequence masterclass.</p>
+                                <div class="card-meta">58% Completed</div>
+                            </div>
+                        </div>
+
+                        <div class="course-card clickbait-hist">
+                            <div class="thumbnail-overlay">
+                                <span class="badge purple">X2 GEMS</span>
+                                <i class="fa-solid fa-timeline card-icon"></i>
+                            </div>
+                            <div class="card-details">
+                                <h3>World War II: The Hidden Treaties Blunder 🗺️</h3>
+                                <p>Why strategic maps change everything about timeline answers.</p>
+                                <div class="card-meta">40% Completed</div>
+                            </div>
+                        </div>
+
+                    </div>
+                </section>
+
+                <aside class="right-pillar">
                     
-                    <div class="feature-card purple-accent" onclick="triggerAction('exam')">
-                        <div class="card-header-icon"><i class="fa-solid fa-chart-line"></i></div>
-                        <h3>Exam Prep</h3>
-                        <p>Question quickfire, mock Exam, problem solver and mistake merchant.</p>
-                        <div class="card-action-indicator">Open Examiner <i class="fa-solid fa-arrow-right"></i></div>
+                    <div class="stat-card box-widget">
+                        <h3>Daily Goal</h3>
+                        <div class="progress-ring-box">
+                            <svg class="ring-svg" width="120" height="120">
+                                <circle class="ring-bg" cx="60" cy="60" r="50"></circle>
+                                <circle class="ring-fill" cx="60" cy="60" r="50" style="stroke-dasharray: 314; stroke-dashoffset: 104;"></circle>
+                            </svg>
+                            <div class="ring-text">
+                                <span class="ring-number">4/6</span>
+                                <span class="ring-label">lessons</span>
+                            </div>
+                        </div>
                     </div>
 
-                    <div class="feature-card purple-accent" onclick="triggerAction('flashcards')">
-                        <div class="card-header-icon"><i class="fa-solid fa-book"></i></div>
-                        <h3>My Flashcards</h3>
-                        <p>Master your subject with visual active-recall study technique.</p>
-                        <div class="card-action-indicator">Open flashcards <i class="fa-solid fa-arrow-right"></i></div>
+                    <div class="leaderboard-card box-widget">
+                        <h3>Global Ladder</h3>
+                        <div class="leaderboard-list">
+                            <div class="leader-row rank-1">
+                                <div class="rank-badge">1</div>
+                                <span class="leader-name">Alex Johnson</span>
+                                <span class="leader-xp">2,450 XP</span>
+                            </div>
+                            <div class="leader-row rank-2">
+                                <div class="rank-badge">2</div>
+                                <span class="leader-name">Jeremy</span>
+                                <span class="leader-xp">2,100 XP</span>
+                            </div>
+                            <div class="leader-row current-user">
+                                <div class="rank-badge">3</div>
+                                <span class="leader-name">Samuel (You)</span>
+                                <span class="leader-xp">1,820 XP</span>
+                            </div>
+                            <div class="leader-row">
+                                <div class="rank-badge">4</div>
+                                <span class="leader-name">S_Gamer99</span>
+                                <span class="leader-xp">1,400 XP</span>
+                            </div>
+                        </div>
                     </div>
 
-                    <div class="feature-card purple-accent" onclick="triggerAction('ai')">
-                        <div class="card-header-icon"><i class="fa-solid fa-chalkboard-user"></i></div>
-                        <h3>AI Tutor</h3>
-                        <p>Instant explanation prompt engine, resource finder, and tutor characterization.</p>
-                        <div class="card-action-indicator">Summon AI <i class="fa-solid fa-arrow-right"></i></div>
+                    <div class="quote-injector-widget">
+                        <p id="rotator-quote-text" class="quote-text">"Discipline today, success tomorrow. Keep pushing forward."</p>
                     </div>
 
-                    <div class="feature-card purple-accent" onclick="triggerAction('quiz')">
-                        <div class="card-header-icon"><i class="fa-solid fa-users"></i></div>
-                        <h3>Group Quiz</h3>
-                        <p>Multiplayer lobbies, competitive real-time rooms, and monthly leaderboard.</p>
-                        <div class="card-action-indicator">Enter Room <i class="fa-solid fa-arrow-right"></i></div>
-                    </div>
-
-                </div>
+                </aside>
             </div>
         </main>
     </div>
