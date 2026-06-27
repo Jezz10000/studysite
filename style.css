@@ -231,11 +231,11 @@ body {
     margin: 6px 0 8px 0;
     font-size: 1.6rem;
     font-weight: 700;
+    color: #be8b8b
 }
 .current-topic-banner h3 {
     font-size: 1.0rem;
     font-weight: 700
-    color: #ff006f
     letter-spacing: 1px;
     text-transform: uppercase;
 
