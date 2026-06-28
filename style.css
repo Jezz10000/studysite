@@ -1,6 +1,6 @@
 body {
     font-family: 'Inter', sans-serif;
-    background-color: #060d1a;
+    background-color: #150d3f;
     color: #ffffff;
     margin: 0;
     padding: 0;
@@ -279,7 +279,6 @@ body {
     margin: 35px 0 20px 0;
 }
 
-/* Central Lesson Track Hero Layout */
 .current-topic-banner {
     background: linear-gradient(135deg, rgba(30, 20, 80, 0.4) 0%, rgba(10, 15, 30, 0.7) 100%);
     border: 1px solid rgba(139, 92, 246, 0.25);
@@ -295,6 +294,13 @@ body {
     font-weight: 700;
     color: #a78bfa;
     letter-spacing: 1px;
+}
+
+.subject-tag {
+    font-size: 0.90rem;
+    font-weight: 600;
+    color: #32c2ff;
+    margin: 0 0 4px 0;
 }
 
 .current-topic-banner h2 { margin: 6px 0; font-size: 1.5rem; }
@@ -324,7 +330,6 @@ body {
 }
 .primary-action-btn:hover { background: #8b5cf6; }
 
-/* Dashboard Adaptive Module Grids */
 .dashboard-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -376,7 +381,6 @@ body {
 .course-card p { color: #94a3b8; font-size: 0.82rem; margin: 0 0 15px 0; line-height: 1.4; }
 .card-meta { font-size: 0.78rem; font-weight: 600; color: #64748b; }
 
-/* Right Column Widgets Configuration */
 .box-widget {
     background: #0a1120;
     border: 1px solid rgba(255, 255, 255, 0.04);
@@ -384,7 +388,6 @@ body {
 }
 .box-widget h3 { margin: 0 0 14px 0; font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.5px; color: #94a3b8; }
 
-/* Ring Sizing Controls to avoid right scrollbars */
 .progress-ring-box {
     display: flex;
     justify-content: center;
@@ -406,7 +409,6 @@ body {
 .ring-number { font-size: 1.25rem; font-weight: 700; color: white; }
 .ring-label { font-size: 0.68rem; color: #64748b; }
 
-/* Global Leaderboard Rows & Rewards System Layouts */
 .leaderboard-list { display: flex; flex-direction: column; gap: 8px; }
 
 .leader-row {
@@ -423,7 +425,6 @@ body {
 .leader-name { flex-grow: 1; font-weight: 500; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .leader-xp { font-weight: 600; color: #64748b; padding-right: 4px; }
 
-/* ECONOMIC VALUE BADGES */
 .reward-tag {
     font-size: 0.72rem;
     font-weight: 700;
