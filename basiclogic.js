@@ -23,7 +23,7 @@ class Dot {
     draw() {
         ctx.beginPath();
         ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-        ctx.fillStyle = 'rgba(255, 0, 234, 0.16)'; // Semitransparent white dots
+        ctx.fillStyle = 'rgba(255, 0, 234, 0.16)'; 
         ctx.fill();
     }
 
@@ -78,7 +78,6 @@ function animate() {
     requestAnimationFrame(animate);
 }
 
-//
 animate();
 
 const MOTIVATIONAL_QUOTES = [
@@ -116,20 +115,6 @@ setInterval(rotateQuoteSmoothly, 5000);
 
 function triggerAction(nodeType) {
     console.log(`Initializing system sequence for: ${nodeType}`);
-    
-    const coinCounter = document.getElementById('coin-amount');
-    if (coinCounter) {
-        let currentCoins = parseInt(coinCounter.textContent.replace(/,/g, ''));
-        currentCoins += 5;
-        coinCounter.textContent = currentCoins.toLocaleString();
-        
-        coinCounter.parentElement.style.transform = 'scale(1.1)';
-        coinCounter.parentElement.style.borderColor = '#38bdf8';
-        setTimeout(() => {
-            coinCounter.parentElement.style.transform = '';
-            coinCounter.parentElement.style.borderColor = '';
-        }, 200);
-    }
 }
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -140,11 +125,116 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-// Global command search shortcut listener
 window.addEventListener('keydown', (e) => {
     if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
         e.preventDefault();
         const searchInput = document.querySelector('.search-wrapper input');
         if (searchInput) searchInput.focus();
+    }
+});
+
+
+// --- SYSTEMS DESIGN FOR AUTH: USERNAME VS DISPLAY NAME ---
+
+function toggleAuthForms(showSignup) {
+    const loginForm = document.getElementById('loginForm');
+    const signupForm = document.getElementById('signupForm');
+    if (showSignup) {
+        loginForm.style.display = 'none';
+        signupForm.style.display = 'block';
+    } else {
+        loginForm.style.display = 'block';
+        signupForm.style.display = 'none';
+    }
+}
+
+function handleAuth(event, type) {
+    event.preventDefault();
+    
+    if (type === 'signup') {
+        const usernameInput = document.getElementById('signupUser').value.trim();
+        const displayNameInput = document.getElementById('signupDisplay').value.trim();
+        const pass = document.getElementById('signupPass').value;
+        
+        // Strict pattern validation: Alphanumeric and underscores only
+        const usernameRegex = /^[a-zA-Z0-9_]+$/;
+        if (!usernameRegex.test(usernameInput)) {
+            alert("Error: Username can only contain letters, numbers, and underscores!");
+            return;
+        }
+        
+        if (!usernameInput || !displayNameInput || !pass) return;
+        
+        // Store user profile components securely map bound
+        localStorage.setItem(`user_pass_${usernameInput}`, pass);
+        localStorage.setItem(`user_display_${usernameInput}`, displayNameInput);
+        localStorage.setItem('studySessionUser', usernameInput);
+        
+        applyAuthenticatedUser(usernameInput);
+    } else if (type === 'login') {
+        const usernameInput = document.getElementById('loginUser').value.trim();
+        const pass = document.getElementById('loginPass').value;
+        
+        const savedPass = localStorage.getItem(`user_pass_${usernameInput}`);
+        
+        if (savedPass && savedPass === pass) {
+            localStorage.setItem('studySessionUser', usernameInput);
+            applyAuthenticatedUser(usernameInput);
+        } else {
+            alert("Invalid username or password!");
+        }
+    }
+}
+
+function applyAuthenticatedUser(username) {
+    const authOverlay = document.getElementById('authContainer');
+    const sidebarName = document.getElementById('sidebarName');
+    const sidebarAvatar = document.getElementById('sidebarAvatar');
+    const welcomeGreeting = document.getElementById('welcomeGreeting');
+    const leaderboardUserName = document.getElementById('leaderboardUserName');
+
+    // Retrieve display name. Fallback to username if none exists.
+    const displayName = localStorage.getItem(`user_display_${username}`) || username;
+
+    if (sidebarName) sidebarName.textContent = displayName;
+    if (sidebarAvatar) sidebarAvatar.textContent = displayName.charAt(0).toUpperCase();
+    if (welcomeGreeting) {
+        welcomeGreeting.innerHTML = `Welcome back ${displayName}! Ready to kill your exams?`;
+    }
+    if (leaderboardUserName) {
+        leaderboardUserName.textContent = `${displayName} (You)`;
+    }
+
+    if (authOverlay) {
+        authOverlay.style.opacity = '0';
+        setTimeout(() => {
+            authOverlay.style.display = 'none';
+        }, 400);
+    }
+}
+
+// Runtime dynamic modification routine for your display name
+function promptChangeDisplayName() {
+    const currentUsername = localStorage.getItem('studySessionUser');
+    if (!currentUsername) return;
+
+    const currentDisplayName = localStorage.getItem(`user_display_${currentUsername}`) || currentUsername;
+    const newName = prompt("Enter your new Public Display Name:", currentDisplayName);
+    
+    if (newName !== null && newName.trim() !== "") {
+        localStorage.setItem(`user_display_${currentUsername}`, newName.trim());
+        applyAuthenticatedUser(currentUsername);
+    }
+}
+
+// Check for active login tokens on initial page load
+document.addEventListener('DOMContentLoaded', () => {
+    const savedUser = localStorage.getItem('studySessionUser');
+    const authOverlay = document.getElementById('authContainer');
+    
+    if (savedUser) {
+        applyAuthenticatedUser(savedUser);
+    } else {
+        if (authOverlay) authOverlay.style.display = 'flex';
     }
 });

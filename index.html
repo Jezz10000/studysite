@@ -37,8 +37,13 @@
 
             <div class="sidebar-footer">
                 <div class="user-profile">
-                    <div class="avatar">S</div>
-                    <span class="username">Samuel</span>
+                    <div class="avatar" id="sidebarAvatar">S</div>
+                    <div class="user-meta-info">
+                        <span class="username" id="sidebarName">Samuel</span>
+                        <button class="edit-name-btn" onclick="promptChangeDisplayName()" title="Change Display Name">
+                            <i class="fa-solid fa-pen"></i>
+                        </button>
+                    </div>
                 </div>
             </div>
         </aside>
@@ -71,7 +76,7 @@
                     <div class="welcome-row">
                         <div class="welcome-heading">
                             <h1>Learn by <span class="fancy-text">levels ahead.</span></h1>
-                            <p>Welcome back Sam! Ready to kill your exams?</p>
+                            <p id="welcomeGreeting">Welcome back Sam! Ready to kill your exams?</p>
                         </div>
                         
                         <button class="create-course-btn" title="Upload PDF/Presentation to launch a custom module">
@@ -167,7 +172,7 @@
                             
                             <div class="leader-row current-user">
                                 <div class="rank-badge">3</div>
-                                <span class="leader-name">Samuel (You)</span>
+                                <span class="leader-name" id="leaderboardUserName">Samuel (You)</span>
                                 <span class="leader-xp">70 XP</span>
                                 <span class="reward-tag reward-gems"><i class="fa-solid fa-gem"></i> 50</span>
                             </div>
@@ -189,6 +194,52 @@
                 </aside>
             </div>
         </main>
+    </div>
+
+    <div id="authContainer" class="auth-overlay">
+        <div class="auth-card">
+            <div class="auth-brand">
+                <i class="fa-solid fa-bolt"></i> <span>Study Site</span>
+            </div>
+            
+            <div id="loginForm">
+                <h2>Welcome Back</h2>
+                <p>Log in to resume your study streak!</p>
+                <form onsubmit="handleAuth(event, 'login')">
+                    <div class="input-group">
+                        <label for="loginUser">Username</label>
+                        <input type="text" id="loginUser" required placeholder="e.g., samuel123">
+                    </div>
+                    <div class="input-group">
+                        <label for="loginPass">Password</label>
+                        <input type="password" id="loginPass" required placeholder="••••••••">
+                    </div>
+                    <button type="submit" class="auth-btn">Log In</button>
+                </form>
+                <p class="auth-switch">New to Study Site? <a href="#" onclick="toggleAuthForms(true)">Create an account</a></p>
+            </div>
+
+            <div id="signupForm" style="display: none;">
+                <h2>Create Account</h2>
+                <p>Join the global ladder and level up your study habits.</p>
+                <form onsubmit="handleAuth(event, 'signup')">
+                    <div class="input-group">
+                        <label for="signupUser">System Username (Alphanumeric & underscores only)</label>
+                        <input type="text" id="signupUser" required placeholder="e.g., alex_10">
+                    </div>
+                    <div class="input-group">
+                        <label for="signupDisplay">Public Display Name</label>
+                        <input type="text" id="signupDisplay" required placeholder="e.g., Alex the Great ✨">
+                    </div>
+                    <div class="input-group">
+                        <label for="signupPass">Create Password</label>
+                        <input type="password" id="signupPass" required placeholder="••••••••">
+                    </div>
+                    <button type="submit" class="auth-btn">Sign Up</button>
+                </form>
+                <p class="auth-switch">Already have an account? <a href="#" onclick="toggleAuthForms(false)">Log in here</a></p>
+            </div>
+        </div>
     </div>
 
     <script src="basiclogic.js"></script>
