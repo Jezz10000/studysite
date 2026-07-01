@@ -14,8 +14,62 @@
 
     <canvas id="dotsCanvas"></canvas>
 
-    <div class="app-container">
-        
+    <div id="landingView" class="landing-hero-view">
+        <header class="landing-nav">
+            <div class="landing-logo">
+                <i class="fa-solid fa-bolt"></i> <span>Study Site</span>
+            </div>
+            <div class="landing-nav-actions">
+                <button class="nav-link-btn" onclick="openAuthModal('login')">Log In</button>
+                <button class="nav-cta-btn" onclick="openAuthModal('signup')">Get Started Free</button>
+            </div>
+        </header>
+
+        <section class="landing-hero-content">
+            <div class="hero-text-area">
+                <span class="hero-badge">🚀 Level Up Your Prep</span>
+                <h1>Learn by <span class="fancy-hero-text">levels ahead.</span></h1>
+                <p>Upload your class PDFs, presentations, or lecture notes to generate tailored exam modules, track active streaks, and climb the global ranking ladder instantly.</p>
+                <div class="hero-cta-group">
+                    <button class="hero-primary-btn" onclick="openAuthModal('signup')">
+                        Start Learning Now <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                    <button class="hero-secondary-btn" onclick="scrollToFeatures()">
+                        See How It Works
+                    </button>
+                </div>
+            </div>
+            <div class="hero-preview-wrapper">
+                <div class="blueprint-mock-window">
+                    <div class="mock-header">
+                        <span class="dot-win red-w"></span>
+                        <span class="dot-win yellow-w"></span>
+                        <span class="dot-win green-w"></span>
+                    </div>
+                    <div class="mock-body-layout">
+                        <div class="mock-sidebar">
+                            <div class="mock-line short"></div>
+                            <div class="mock-line active"></div>
+                            <div class="mock-line"></div>
+                            <div class="mock-line"></div>
+                        </div>
+                        <div class="mock-main">
+                            <div class="mock-banner">
+                                <div class="mock-line tall"></div>
+                                <div class="mock-line mid"></div>
+                            </div>
+                            <div class="mock-cards">
+                                <div class="mock-card-item"></div>
+                                <div class="mock-card-item"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <div id="appWorkspace" class="app-container" style="display: none;">
         <aside class="sidebar">
             <div class="sidebar-brand">
                 <i class="fa-solid fa-bolt"></i> <span>Study Site</span>
@@ -49,7 +103,6 @@
         </aside>
 
         <main class="main-content">
-            
             <header class="topbar">
                 <div class="search-wrapper">
                     <i class="fa-solid fa-magnifying-glass"></i>
@@ -71,14 +124,12 @@
             </header>
 
             <div class="workspace-split">
-                
                 <section class="left-pillar">
                     <div class="welcome-row">
                         <div class="welcome-heading">
                             <h1>Learn by <span class="fancy-text">levels ahead.</span></h1>
                             <p id="welcomeGreeting">Welcome back Sam! Ready to kill your exams?</p>
                         </div>
-                        
                         <button class="create-course-btn" title="Upload PDF/Presentation to launch a custom module">
                             <i class="fa-solid fa-plus"></i>
                             <span>Create Course</span>
@@ -91,7 +142,6 @@
                             <h2 class="subject-tag"> GCSE Chemistry:</h2>
                             <h3>Atomic Stability</h3>
                             <p>Why does everything decay into lead?</p>
-                            
                             <div class="topic-progress-container">
                                 <div class="progress-bar-track">
                                     <div class="progress-bar-fill" style="width: 67%;"></div>
@@ -108,7 +158,6 @@
 
                     <h3 class="section-title">Trending Modules</h3>
                     <div class="dashboard-grid">
-                        
                         <div class="course-card clickbait-math">
                             <div class="thumbnail-overlay">
                                 <span class="badge red">CRITICAL</span>
@@ -132,12 +181,10 @@
                                 <div class="card-meta">80% Completed</div>
                             </div>
                         </div>
-
                     </div>
                 </section>
 
                 <aside class="right-pillar">
-                    
                     <div class="stat-card box-widget">
                         <h3>Daily Goal</h3>
                         <div class="progress-ring-box">
@@ -155,49 +202,45 @@
                     <div class="leaderboard-card box-widget">
                         <h3>Global Ladder</h3>
                         <div class="leaderboard-list">
-                            
                             <div class="leader-row rank-1">
                                 <div class="rank-badge">1</div>
                                 <span class="leader-name">N0_one_3lseXD</span>
                                 <span class="leader-xp">450 XP</span>
                                 <span class="reward-tag reward-gems"><i class="fa-solid fa-gem"></i> 100</span>
                             </div>
-                            
                             <div class="leader-row rank-2">
                                 <div class="rank-badge">2</div>
                                 <span class="leader-name">Jeremy</span>
                                 <span class="leader-xp">450 XP</span>
                                 <span class="reward-tag reward-gems"><i class="fa-solid fa-gem"></i> 70</span>
                             </div>
-                            
                             <div class="leader-row current-user">
                                 <div class="rank-badge">3</div>
                                 <span class="leader-name" id="leaderboardUserName">Samuel (You)</span>
                                 <span class="leader-xp">70 XP</span>
                                 <span class="reward-tag reward-gems"><i class="fa-solid fa-gem"></i> 50</span>
                             </div>
-                            
                             <div class="leader-row rank-4">
                                 <div class="rank-badge">4</div>
                                 <span class="leader-name">Everyone_else</span>
                                 <span class="leader-xp">10 XP</span>
                                 <span class="reward-tag reward-coins"><i class="fa-solid fa-coins"></i> 400</span>
                             </div>
-                            
                         </div>
                     </div>
 
                     <div class="quote-injector-widget">
                         <p id="rotator-quote-text" class="quote-text">"Discipline today, success tomorrow. Keep pushing forward."</p>
                     </div>
-
                 </aside>
             </div>
         </main>
     </div>
 
-    <div id="authContainer" class="auth-overlay">
+    <div id="authContainer" class="auth-overlay" style="display: none;">
         <div class="auth-card">
+            <button class="close-auth-modal-btn" onclick="closeAuthModal()"><i class="fa-solid fa-xmark"></i></button>
+            
             <div class="auth-brand">
                 <i class="fa-solid fa-bolt"></i> <span>Study Site</span>
             </div>
@@ -224,7 +267,7 @@
                 <p>Join the global ladder and level up your study habits.</p>
                 <form onsubmit="handleAuth(event, 'signup')">
                     <div class="input-group">
-                        <label for="signupUser">System Username (Alphanumeric & underscores only)</label>
+                        <label for="signupUser">System Username</label>
                         <input type="text" id="signupUser" required placeholder="e.g., alex_10">
                     </div>
                     <div class="input-group">
